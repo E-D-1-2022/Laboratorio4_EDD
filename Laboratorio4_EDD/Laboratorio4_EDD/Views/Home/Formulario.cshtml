@@ -1,0 +1,49 @@
+﻿@using Laboratorio4_EDD.DTO;
+@{
+    ViewData["Title"] = "Formulario";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title text-center">Insertar Jugador</h2>
+            <form asp-controller="Pacientes" asp-action="InsertarPaciente">
+                <label for="txtNombre" class="form-label">Nombre: </label>
+                <input type="text" name="txtNombre" id="txtNombre" class="form-control" placeholder="Ingrese su nombre" />
+                <br />
+                <label for="txtApeliido" class="form-label">Apellido: </label>
+                <input type="text" name="txtApellido" id="txtApellido" class="form-control" placeholder="Ingrese su apellido" />
+                <br />
+                <label for="DtpFechaNac" class="form-label">Fecha Nacimiento: </label>
+                <input type="date" name="DtpFechaNac" id="DtpFechaNac" class="form-control" />
+                <br />
+                <label for="cbsexo" class="form-label">Sexo: </label>
+                <select id="cbsexo" name="cbsexo" class="form-select">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                </select>
+                <br />
+                <label for="cbEspecializacion" class="form-label">Especializacion: </label>
+                <select id="cbEspecializacion" name="cbEspecializacion" class="form-select">
+                    @foreach (var items in ViewData["ListaEsp"] as List<EspecializacionDTO>)
+                    {
+                        <option value="@items.Especializacion">@items.Especializacion</option>
+                    }
+                </select>
+                <br />
+                <label for="cbIngreso" class="form-label">Especializacion: </label>
+                <select id="cbIngreso" name="cbIngreso" class="form-select">
+                    @foreach (var items in ViewData["ListaIngreso"] as List<IngresoDTO>)
+                    {
+                        <option value="@items.Ingreso">@items.Ingreso</option>
+                    }
+                </select>
+                <br />
+                <div class="d-flex align-items-center justify-content-center">
+                    <button class="btn-lg btn-dark mt-2">Guardar Paciente</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
